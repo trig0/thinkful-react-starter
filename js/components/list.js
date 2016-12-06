@@ -10,7 +10,7 @@ export default function List(props) {
       })
     }
 
-    <form onSubmit={ props.onAddSubmit }>
+    <form onSubmit={ props.onAddSubmit.bind(this, props.title) }>
       <input type='text' onChange={ props.onAddInputChanged } />
       <input type='submit' />
     </form>

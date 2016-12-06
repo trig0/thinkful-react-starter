@@ -6,9 +6,9 @@ export default function Board(props) {
     console.log('Input changed!');
   }
 
-  function onAddSubmit(event) {
+  function onAddSubmit(listName, event) {
     event.preventDefault();
-    console.log('Form submitted!');
+    console.log(`Form submitted to ${ listName }!`);
   }
 
   return(<div>
