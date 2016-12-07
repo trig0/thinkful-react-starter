@@ -1,20 +1,32 @@
 /*jshint esversion: 6 */
-import React from 'react';
-import Input from './components/input';
+import React, { Component } from 'react';
+import Input from './input';
 
-export default class Main extends React.Component {
+export default class Main extends Component {
 	constructor(props) {
 		super(props);
-		this.fetchAPI = this.fetchAPI.bind(this);
+		this._fetchAPI = this._fetchAPI.bind(this);
+		this._onInput = this._onInput.bind(this);
+		this.state = {
+			body: []
+		}
 
 	}
 
 	//fetch function
-
 	_fetchAPI() {
-		const URL = 'https://api.github.com/users';
-		fetch(URL).then(function(response){
+		const URL = 'https://api.github.com/users/octocat/repos';
+		fetch(URL).then((response) => {
 			return response.json();
+		})
+		.then((body) => {
+			return body;
+		});
+	}
+
+	_onInput(event){
+		this.setState({
+			body: body
 		});
 	}
 
@@ -22,7 +34,7 @@ export default class Main extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>{this.props.title}</h1>
+				<Input data={this.body} />
 			</div>
 			);
 	}

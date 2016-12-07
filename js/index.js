@@ -1,11 +1,18 @@
 require('babel-polyfill');
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-
+import { render } from 'react-dom';
 import Main from './components/main';
 
+const sampleData = {
+	username: "Username",
+	url: "URL"
+}
 
-document.addEventListener('DOMContentLoaded', () =>
-	ReactDOM.render(<Main title="This is the Main Title" />, document.getElementByID('app'))
-		);
+render(
+  <Main />, document.getElementById('app'));
+
+// document.addEventListener('DOMContentLoaded', () =>
+// 	ReactDOM.render(<Main />, 
+// 	document.getElementByID('app'))
+// );
