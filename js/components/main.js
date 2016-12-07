@@ -3,8 +3,31 @@ import React, { Component } from 'react';
 
 function Input(props) {
 	//make this a form with the input passing to the URL
-	return <button onClick={props.getAPI}>{props.buttonText}</button>
+	let query;
 
+	function submitForm(e){
+		e.preventDefault();
+		props.getAPI(query.value);
+	}
+
+	return (
+
+			<form onSubmit={submitForm}>
+				<input type='text' ref={(textInput) => {query = textInput; }}/>
+				<button>{props.buttonText}</button>
+			</form>
+	)
+
+}
+
+function Repo(props) {
+
+	return (
+		<div>
+			<h1>{props.name}</h1>
+			<p>{props.description}</p>
+		</div>
+	)
 }
 
 export default class Main extends Component {
@@ -20,8 +43,9 @@ export default class Main extends Component {
     }
 
     //fetch function
-    _fetchAPI() {
-        const URL = 'https://api.github.com/users/octocat/repos';
+    _fetchAPI(textInput) {
+				console.log(textInput);
+        let URL = 'https://api.github.com/users/' + textInput + '/repos';
         fetch(URL).then((response) => {
                 return response.json();
             })
@@ -40,15 +64,15 @@ export default class Main extends Component {
 
     //render function
     render() {
-        
-        return ( 
+
+        return (
         	<div>
         	<Input getAPI={this._fetchAPI} buttonText={'Submit me!'} />
-            <p>{this.state.repos.map((data) => {
-            	(data);
-            })
-        }
-            </p>
+            <ul>{this.state.repos.map((repo, i) => {
+            	//return <li key={i}>{repo.name}</li>;
+							return <Repo name={repo.name} description={repo.description} key={i}/>
+            })}
+					</ul>
             </div>
         );
     }
