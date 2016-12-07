@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 import React from 'react';
 
 export default class Input extends React.Component {
@@ -13,11 +14,24 @@ export default class Input extends React.Component {
 			issues : "# of Issues",
 			watchers : "# of Watchers",
 			stargazers : "# of Stargazers"
-		}
-		
+		};
+
 		//onAddInputChange - setState for each key
 		//onAddSubmit
-		
+		_onInput(event){
+			this.setState({
+				username: event.target.value,
+				repoName: event.target.value,
+				repoLink: event.target.value,
+				repoDescr: event.target.value,
+				repoDate: event.target.value,
+				forks: event.target.value,
+				issues: event.target.value,
+				watchers: event.target.value,
+				stargazers: event.target.value
+			});
+		}
+
 	}
 	render () {
 		return (
