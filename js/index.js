@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 require('babel-polyfill');
 
 import React from 'react';
@@ -7,12 +8,12 @@ import Main from './components/main';
 const sampleData = {
 	username: "Username",
 	url: "URL"
-}
+};
 
 render(
-  <Main />, document.getElementById('app'));
+  <Main title={sampleData.username}/>, document.getElementById('app'));
 
 // document.addEventListener('DOMContentLoaded', () =>
-// 	ReactDOM.render(<Main />, 
+// 	ReactDOM.render(<Main />,
 // 	document.getElementByID('app'))
 // );

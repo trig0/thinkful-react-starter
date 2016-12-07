@@ -9,7 +9,7 @@ export default class Main extends Component {
 		this._onInput = this._onInput.bind(this);
 		this.state = {
 			body: []
-		}
+		};
 
 	}
 
@@ -20,6 +20,7 @@ export default class Main extends Component {
 			return response.json();
 		})
 		.then((body) => {
+			console.log(body);
 			return body;
 		});
 	}
@@ -34,7 +35,9 @@ export default class Main extends Component {
 	render() {
 		return (
 			<div>
-				<Input data={this.body} />
+				<p>This is the body</p>
+				{this._fetchAPI()}
+				<Input data={this.body.name}  />
 			</div>
 			);
 	}
